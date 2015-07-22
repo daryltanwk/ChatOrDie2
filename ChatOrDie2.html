@@ -1,14 +1,33 @@
 <head>
-  <title>ChatOrDie2</title>
+    <title>ChatOrDie2</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+    <div class="container">
+    	{{> Router}}
+    </div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="loginPanel">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+            <h2 class="text-center"><kbd>C</kbd>hat<kbd>O</kbd>r<kbd>D</kbd>ie <kbd>2</kbd></h2>
+            <div class="well">
+                <p class="text-center lead">Login</p>
+                <form>
+                    <div class="form-group">
+                        <label>User</label>
+                        <input type="text" class="form-control" id="loginUser">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" id="loginPass">
+                    </div>
+                    <a class="btn btn-default btn-block" href="#">Enter</a>
+                </form>
+                <br>
+                <a href="#">Register new account</a>
+            </div>
+        </div>
+    </div>
 </template>
