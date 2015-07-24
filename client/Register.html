@@ -1,4 +1,4 @@
-<template name="RegisterLayout">
+<template name="registerLayout">
     <!-- Registration Form Layout -->
     <div class="row">
         <div class="col-xs-offset-2 col-xs-8">
@@ -6,36 +6,37 @@
             <div class="well">
                 <form class="form-horizontal">
                     <p class="lead">Basic Information</p>
-                    <div class="form-group">
+                    <div id="registerUsernameFormGroup" class="form-group">
                         <label class="col-xs-3 control-label">Username</label>
                         <div class="col-xs-6">
-                            <input type="text" class="form-control">
-                            <span class="help-block">Alphanumeric, no special characters, cannot begin with space, hyphen or underscores.</span>
+                            <input type="text" id="registerUsername" class="form-control">
+                            <span class="help-block">Alphanumeric, no special characters or spaces, cannot begin with hyphen or underscores.</span>
                         </div>
+                        <label class="col-xs-3 help-block">{{usernameCharCount}}/20</label>
                     </div>
                     <div class="form-group">
                         <label class="col-xs-3 control-label">Password</label>
                         <div class="col-xs-6">
-                            <input type="password" class="form-control">
+                            <input id="registerPassword" type="password" class="form-control">
                             <span class="help-block">Passwords are anything. As long as they exist.</span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div id="registerPassword2FormGroup" class="form-group">
                         <label class="col-xs-3 control-label">Re-enter Password</label>
                         <div class="col-xs-6">
-                            <input type="password" class="form-control">
-                            <span class="help-block">Make sure you didn't miss out any characters!</span>
+                            <input id="registerPassword2" type="password" class="form-control">
+                            <span id="registerPassword2Help" class="help-block invisible">Make sure you didn't miss out any characters!</span>
                         </div>
                     </div>
-                    <h2 class="lead">Additional Information</h2>
+                    <p class="lead">Additional Information</p>
                     <div class="form-group">
-                        <div class="col-xs-11 col-xs-offset-1">
-                            <span class="help-block">Nothing! We don't need anything else. Yet.</span>
+                        <div class="col-xs-12">
+                            <p class="text-center">Nothing! We don't need anything else. Yet.</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <a href="#" class="btn btn-primary pull-right">Register</a>
+                            <a href="#" class="btn btn-{{submitState.color}} pull-right {{submitState.state}}" id="registerSubmit">Register</a>
                         </div>
                     </div>
                 </form>
