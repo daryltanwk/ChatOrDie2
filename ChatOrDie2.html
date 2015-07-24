@@ -4,10 +4,9 @@
 
 <body>
     <div class="container">
-    	{{> Router}}
+        {{> Router}}
     </div>
 </body>
-
 <template name="loginPanel">
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
@@ -23,11 +22,20 @@
                         <label>Password</label>
                         <input type="password" class="form-control" id="loginPass">
                     </div>
-                    <a class="btn btn-default btn-block" href="#">Enter</a>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a class="btn btn-primary btn-block" href="#">Enter</a>
+                        </div>
+                    </div>
                 </form>
                 <br>
-                <a href="#">Register new account</a>
+                <a id="loginToRegister" href="#">Register new account</a>
             </div>
         </div>
     </div>
+</template>
+<template name="loadingPage">
+    <h1>
+	Just Loading Bro...
+</h1>
 </template>
