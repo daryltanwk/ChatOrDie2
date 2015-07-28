@@ -2,8 +2,8 @@
     <!-- Registration Form Layout -->
     <div class="row">
         <div class="col-xs-offset-2 col-xs-8">
-            <h2>New <kbd>C</kbd> <kbd>O</kbd> <kbd>D</kbd> <kbd>2</kbd> Account</h2>
             <div class="well">
+                <h4 class="text-center">Welcome to <kbd>C</kbd> <kbd>O</kbd> <kbd>D</kbd> <span class="swanky text-danger">2</span></h4>
                 <form class="form-horizontal">
                     <p class="lead">Basic Information</p>
                     <div id="registerUsernameFormGroup" class="form-group">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <a href="#" class="btn btn-{{submitState.color}} pull-right {{submitState.state}}" id="registerSubmit">Register</a>
+                            <button id="registerSubmit" class="btn btn-{{submitState.color}} pull-right" {{submitState.state}} type="submit">Register</button>
                         </div>
                     </div>
                 </form>

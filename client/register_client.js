@@ -1,9 +1,9 @@
 /*
-	Sign-up/Register Module Client JS
+    Sign-up/Register Module Client JS
 
-	Client JS Files mainly contain the:
-	1) Helpers
-	2) Events
+    Client JS Files mainly contain the:
+    1) Helpers
+    2) Events
 */
 
 //==========    registerLayout template START    ==========
@@ -32,11 +32,27 @@ Template.registerLayout.helpers({
 });
 
 Template.registerLayout.events({
-    'click #registerSubmit': function(evt, template) {
+    'click #registerSubmit, submit': function(evt, template) {
         evt.preventDefault();
-        //check valid states of template elements
-        // if(template.$(#'registerUsernameFormGroup').hasClass('has-error'))
         //send submission
+        var username = template.find('#registerUsername').value;
+        var password = template.find('#registerPassword').value;
+
+        Accounts.createUser({
+            username: username,
+            password: password
+        }, function(err) {
+            if (err) {
+                alert(err);
+                if (err.error === 'bad_user') {
+                    template.find('#registerUsername').value = "";
+                    Session.set('registerUsernameCharCount', 0)
+                }
+            }else {
+                Router.go('/home');
+            }
+        });
+
     },
     'keyup #registerUsername': function(evt, template) {
         // enforce length restriction
@@ -44,8 +60,8 @@ Template.registerLayout.events({
             evt.currentTarget.value = evt.currentTarget.value.substr(0, 20);
         }
         //check states of field
-        var usernameRegex = /^[a-z0-9]+[-_a-z0-9]*$/i;
-        if (usernameRegex.test(evt.currentTarget.value)) {
+
+        if (USERNAME_REGEX.test(evt.currentTarget.value)) {
             //set valid state of element
             template.$('#registerUsernameFormGroup').removeClass('has-error');
             Session.set('registerUsernameValid', true);
@@ -64,8 +80,8 @@ Template.registerLayout.events({
             template.$('#registerPassword2Help').addClass('invisible');
             if (passwordField.length > 0 && passwordField2.length > 0) {
                 Session.set('registerPasswordValid', true);
-            }else {
-            	Session.set('registerPasswordValid', false);
+            } else {
+                Session.set('registerPasswordValid', false);
             }
         } else {
             template.$('#registerPassword2FormGroup').addClass('has-warning');
