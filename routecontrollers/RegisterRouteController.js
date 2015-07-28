@@ -1,5 +1,5 @@
 RegisterController = RouteController.extend({
-    layoutTemplate: 'RegisterLayout'
+    template: 'RegisterLayout'
 });
 
 Router.route('/register', {
