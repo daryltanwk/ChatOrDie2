@@ -1,4 +1,82 @@
+/* Font declarations go here*/
+
+@import url(http://fonts.googleapis.com/css?family=Fontdiner+Swanky);
+
 /* CSS declarations go here */
+
 .toppadding {
-	padding-top: 20px;
+    padding-top: 20px;
 }
+
+.swanky {
+    font-family: 'Fontdiner Swanky', cursive;
+}
+
+/* Custom CSS from 3rd Parties*/
+
+
+/***********BLINKING CURSOR <START>***********/
+
+.blinking-cursor {
+    font-weight: 100;
+    font-size: 15px;
+    color: #2E3D48;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+    from,
+    to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-moz-keyframes blink {
+    from,
+    to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-webkit-keyframes blink {
+    from,
+    to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-ms-keyframes blink {
+    from,
+    to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-o-keyframes blink {
+    from,
+    to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+
+/***********BLINKING CURSOR <END>***********/

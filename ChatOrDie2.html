@@ -1,16 +1,19 @@
 <head>
-    <title>ChatOrDie2</title>
+    <title>Chat Or Die 2</title>
 </head>
 
 <body>
     <div class="container">
-        {{> Router}}
+        {{> header}}
+        <div id="router">
+            {{> Router}}
+        </div>
     </div>
 </body>
+
 <template name="loginPanel">
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
-            <h2 class="text-center"><kbd>C</kbd>hat<kbd>O</kbd>r<kbd>D</kbd>ie <kbd>2</kbd></h2>
             <div class="well">
                 <p class="text-center lead">Login</p>
                 <form>
@@ -34,8 +37,38 @@
         </div>
     </div>
 </template>
+
+<template name="notFoundPage">
+    <h1 class="text-center">404 File Not Found!</h1>
+    <h3 class="text-center">Ah hah! It looks like you lost your way! Careless you!</h3>
+    <h5 class="text-center">No, seriously. 404 bro.</h5>
+    <h6 class="text-center">Nothing to do here. How about going <a href="/">home</a>?</h6>
+</template>
+
 <template name="loadingPage">
-    <h1>
-	Just Loading Bro...
-</h1>
+    <h1 class="text-center lead">Hang on, loading!</h1>
+</template>
+
+<template name="header">
+    <div class="row">
+        <div class="col-xs-10">
+            <h2 class=""><kbd>C</kbd>hat<kbd>O</kbd>r<kbd>D</kbd>ie <span class="swanky text-danger">2</span> | <small>When faced with death, strike up a conversation<span class="blinking-cursor">_</span></small></h2>
+        </div>
+        {{#if currentUser}}
+        <div class="col-xs-2 toppadding">
+            <div class="dropdown">
+                <a href="#" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Home <span class=
+            "glyphicon glyphicon-triangle-bottom"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Play</a></li>
+                    <li><a href="#">Ranking</a></li>
+                    <li><a href="#">News/Blog</a></li>
+                    <li><a href="#"><span class="text-danger">ADMIN</span></a></li>
+                </ul>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+    <hr>
 </template>
