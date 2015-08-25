@@ -1,75 +1,85 @@
 <template name="homeLayout">
     <div class="row">
-        <div class="col-xs-9">
+        <div class="col-xs-8">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-xs-8">
-                            <div class="well well-sm quadUnitHeight">
-                                Hi
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <h4>Users</h4>
-                                    <div class="panel panel-default doubleUnitHeight">
-                                        <div class="panel-body">
-                                            <span class="label label-warning">WWWWWWWWWWWWWWWWWWWWWWWWW</span>
-                                            <span class="label label-warning">WWWWWWWWWWWWWW</span>
-                                            <span class="label label-warning">WW</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <h4>Chat Settings</h4>
-                                    <div class="panel panel-default unitHeight">
-                                        <div class="panel-body">
-                                            <span class="label label-warning">WWWWWWWWWWWWWWWWWWWWWWWWW</span>
-                                            <span class="label label-warning">WWWWWWWWWWWWWW</span>
-                                            <span class="label label-warning">WW</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-xs-12">
+                            <div id="chatPanel" class="well well-sm quadUnitHeightFixed VT323 scrolling">
+                                    {{#each msgs}} {{> chatBubble}} {{/each}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-xs-10">
-                            <input type="text" class="form-control" style="width:100%;">
+                        <form>
+                            <div class="col-xs-10">
+                                <input id="chatInput" type="text" class="form-control VT323" style="width:100%;">
+                            </div>
+                            <div class="col-xs-2">
+                                <button type="submit" class="btn btn-block btn-primary">
+                                    <span class="glyphicon glyphicon-chevron-right"></span> Send
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="row toppadding">
+                <div class="col-xs-12">
+                    <a href="#" class="btn btn-success btn-block">My Profile</a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-primary doubleUnitHeightFixed scrolling">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Online Users
+                            </div>
                         </div>
-                        <div class="col-xs-2">
-                            <a href="#" class="btn btn-block btn-primary">
-                                <span class="glyphicon glyphicon-chevron-right"></span> Send
-                            </a>
+                        <div class="panel-body">
+                            {{#each onlineUsers}}
+                            <a href="#">
+                                <span class="label label-info">{{username}}</span>
+                            </a>{{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-warning doubleUnitHeight">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Alerts
+                            </div>
+                        </div>
+                        <div class="panel-body VT323">
+                            This part of the page will be used to display alerts and notifications
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-3">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h4>Profile</h4>
-                    <div class="panel panel-default doubleUnitHeight">
-                        <div class="panel-body VT323">
-                            This part of the page will be used to display a profile summary
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h4>Alerts</h4>
-                    <div class="panel panel-warning doubleUnitHeight">
-                        <div class="panel-body VT323">
-                            This part of the page will be used to display alerts and notifications
-                        </div>
-                    </div>
+    </div>
+</template>
+<template name="chatBubble">
+    <div class="row">
+        <div class="col-xs-12 {{fromMeBubble sender}}">
+            <div id="{{_id}}" class="panel hidden adjustable" style="margin-bottom:3px;">
+                <div class="panel-body text-left" style="background-color: {{bubbleColor sender}};">
+                    {{#unless fromMeBubble sender}}
+                    <span class="text-primary h5">{{name sender}}</span>
+                    <br>
+                    {{/unless}}
+                    <span class="p">{{content}}</span>
+                    <br>
+                    <small class="pull-right">{{tStamp sentAt}}</small>
                 </div>
             </div>
         </div>

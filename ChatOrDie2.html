@@ -10,7 +10,6 @@
         </div>
     </div>
 </body>
-
 <template name="loginPanel">
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
@@ -27,7 +26,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <a class="btn btn-primary btn-block" href="#">Enter</a>
+                            <button class="btn btn-primary btn-block">Enter</button>
                         </div>
                     </div>
                 </form>
@@ -37,24 +36,27 @@
         </div>
     </div>
 </template>
-
 <template name="notFoundPage">
     <h1 class="text-center">404 File Not Found!</h1>
     <h3 class="text-center">Ah hah! It looks like you lost your way! Careless you!</h3>
     <h5 class="text-center">No, seriously. 404 bro.</h5>
     <h6 class="text-center">Nothing to do here. How about going <a href="/">home</a>?</h6>
 </template>
-
 <template name="loadingPage">
     <h1 class="text-center lead">Hang on, loading!</h1>
 </template>
-
 <template name="header">
     <div class="row">
-        <div class="col-xs-10">
+        <div class="col-xs-8">
             <h2 class=""><kbd>C</kbd>hat<kbd>O</kbd>r<kbd>D</kbd>ie <span class="swanky text-danger">2</span> | <small>When faced with death, strike up a conversation<span class="blinking-cursor">_</span></small></h2>
         </div>
         {{#if currentUser}}
+        <div class="col-xs-2">
+            <h4 class="VT323 text-center">
+            Logged in as: <br>
+            <span class="label label-success">{{currentUser.username}}</span>
+            </h4>
+        </div>
         <div class="col-xs-2 toppadding">
             <div class="dropdown">
                 <a href="#" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Home <span class=
@@ -64,7 +66,8 @@
                     <li><a href="#">Play</a></li>
                     <li><a href="#">Ranking</a></li>
                     <li><a href="#">News/Blog</a></li>
-                    <li><a href="#"><span class="text-danger">ADMIN</span></a></li>
+                    <li><a href="#"><span class="text-warning">ADMIN</span></a></li>
+                    <li><a id="headerLogOut" href="#"><span class="text-danger"><strong>LOG OUT</strong></span></a></li>
                 </ul>
             </div>
         </div>

@@ -18,19 +18,48 @@
 }
 
 .unitHeight {
-    min-height:120px;
+    min-height: 120px;
+}
+
+.unitHeightFixed {
+    height: 120px;
 }
 
 .doubleUnitHeight {
-    min-height:260px;
+    min-height: 260px;
+}
+
+.doubleUnitHeightFixed {
+    height: 260px;
 }
 
 .tripleUnitHeight {
-    min-height:400px;
+    min-height: 400px;
+}
+
+.tripleUnitHeightFixed {
+    height: 400px;
 }
 
 .quadUnitHeight {
-    min-height:540px;
+    min-height: 540px;
+}
+
+.quadUnitHeightFixed {
+    height: 540px;
+}
+
+.scrolling {
+    word-wrap: break-word;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.adjustable {
+    min-width: 30%;
+    width: auto;
+    display: inline-block;
+    max-width: 70%;
 }
 
 /* Custom CSS from 3rd Parties*/
