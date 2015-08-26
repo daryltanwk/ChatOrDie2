@@ -5,7 +5,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12">
-                            <div id="chatPanel" class="well well-sm quadUnitHeightFixed VT323 scrolling">
+                            <div id="chatPanel" class="well well-sm quadUnitHeightFixed titillium scrolling">
                                     {{#each msgs}} {{> chatBubble}} {{/each}}
                             </div>
                         </div>
@@ -15,7 +15,7 @@
                     <div class="row">
                         <form>
                             <div class="col-xs-10">
-                                <input id="chatInput" type="text" class="form-control VT323" style="width:100%;">
+                                <input id="chatInput" type="text" class="form-control titillium" style="width:100%;" autocomplete="off">
                             </div>
                             <div class="col-xs-2">
                                 <button type="submit" class="btn btn-block btn-primary">
@@ -45,7 +45,7 @@
                         <div class="panel-body">
                             {{#each onlineUsers}}
                             <a href="#">
-                                <span class="label label-info">{{username}}</span>
+                                <span class="label label-info titillium">{{username}}</span>
                             </a>{{/each}}
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                                 Alerts
                             </div>
                         </div>
-                        <div class="panel-body VT323">
+                        <div class="panel-body titillium">
                             This part of the page will be used to display alerts and notifications
                         </div>
                     </div>

@@ -2,11 +2,16 @@
 
 @import url(http://fonts.googleapis.com/css?family=Fontdiner+Swanky);
 @import url(http://fonts.googleapis.com/css?family=VT323);
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web);
 
 /* CSS declarations go here */
 
 .toppadding {
     padding-top: 20px;
+}
+
+.titillium {
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .VT323 {
