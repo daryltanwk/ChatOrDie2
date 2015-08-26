@@ -31,10 +31,8 @@ Template.chatBubble.helpers({
     },
     fromMeBubble:function(userId) {
         if(Meteor.user().username === Meteor.users.findOne({_id:userId}).username){
-            console.log('TRUE');
             return 'text-right';
         }else {
-            console.log('FALSE');
             return false;
         }
     },
