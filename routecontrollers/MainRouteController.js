@@ -1,9 +1,17 @@
 Router.configure({
-    notFoundTemplate:'notFoundPage'
+    notFoundTemplate: 'notFoundPage'
 });
 
 MainController = RouteController.extend({
-    template: 'loginPanel'
+    action: function() {
+        if (Meteor.loggingIn()) {
+            this.render('loadingPage');
+        } else if (Meteor.user()) {
+            Router.go('/home');
+        } else {
+            this.render('loginPanel');
+        }
+    }
 });
 
 Router.route('/', {

@@ -3,5 +3,6 @@ HomeRouteController = RouteController.extend({
 });
 
 Router.route('/home',{
-	controller:'HomeRouteController'
+	controller:'HomeRouteController',
+	name:'home'
 });
