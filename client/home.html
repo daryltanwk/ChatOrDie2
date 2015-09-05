@@ -77,9 +77,7 @@
                     <span class="text-primary h5">{{name sender}}</span>
                     <br>
                     {{/unless}}
-
-                    {{> contentRenderer content}}
-
+                    <span class="p">{{content}}</span>
                     <br>
                     <small class="pull-right">{{tStamp sentAt}}</small>
                 </div>
@@ -87,10 +85,3 @@
         </div>
     </div>
 </template>
-
-<template name="contentRenderer">
-    <span class="p">
-        {{{renderText this}}}
-    </span>
-</template>
-

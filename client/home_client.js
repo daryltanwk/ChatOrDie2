@@ -16,44 +16,6 @@ Template.homeLayout.helpers({
     }
 });
 
-
-function isUrl(string) {
-    return new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?").test(string);
-}
-
-Template.contentRenderer.helpers({
-    renderText: function(content) {
-        var strArr = content.split(" ");
-
-        var res = "";
-
-        _.each(strArr, function(str, index) {
-            if(index != 0) {
-                res += " ";
-            }
-
-            if (isUrl(str)) {
-                res += "<a href=\"";
-
-                console.log(str.indexOf("http"));
-
-                if (str.indexOf("http") == 0) {
-                    //if it already gt http, do nothing
-                } else {
-                    res += "http://";
-                }
-
-                res += str + "\"" + " target=\"_blank\" " +       ">"  + str + "</a>";
-                
-            } else {
-                res += str;
-            }
-        });
-
-        return res;
-    }
-});
-
 Template.chatBubble.helpers({
     name: function(userId) {
         if (!userId) {
