@@ -34,7 +34,10 @@ Template.contentRenderer.helpers({
 
             if (isUrl(str)) {
                 res += "<a href=\"";
-                if (str.indexOf("http") > -1) {
+
+                console.log(str.indexOf("http"));
+
+                if (str.indexOf("http") == 0) {
                     //if it already gt http, do nothing
                 } else {
                     res += "http://";
