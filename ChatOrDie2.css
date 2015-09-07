@@ -3,11 +3,16 @@
 @import url(http://fonts.googleapis.com/css?family=Fontdiner+Swanky);
 @import url(http://fonts.googleapis.com/css?family=VT323);
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web);
+@import url(https://fonts.googleapis.com/css?family=Kalam:300);
 
 /* CSS declarations go here */
 
 .toppadding {
     padding-top: 20px;
+}
+
+.kalam {
+    font-family: 'Kalam', cursive;
 }
 
 .titillium {
@@ -23,7 +28,7 @@
 }
 
 .unitHeight {
-    min-height: 120px;
+    max-height: 120px;
 }
 
 .unitHeightFixed {
@@ -31,7 +36,7 @@
 }
 
 .doubleUnitHeight {
-    min-height: 260px;
+    max-height: 260px;
 }
 
 .doubleUnitHeightFixed {
@@ -39,7 +44,7 @@
 }
 
 .tripleUnitHeight {
-    min-height: 400px;
+    max-height: 400px;
 }
 
 .tripleUnitHeightFixed {
@@ -47,7 +52,7 @@
 }
 
 .quadUnitHeight {
-    min-height: 540px;
+    max-height: 540px;
 }
 
 .quadUnitHeightFixed {
@@ -66,6 +71,7 @@
     display: inline-block;
     max-width: 70%;
 }
+
 
 /* Custom CSS from 3rd Parties*/
 

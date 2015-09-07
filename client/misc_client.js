@@ -25,5 +25,10 @@ Template.header.events({
     'click #headerLogOut': function(evt, template) {
         evt.preventDefault();
         Meteor.logout();
+    },
+    'click .headerLinkToPage':function(evt, template){
+        evt.preventDefault();
+        var route = evt.currentTarget.getAttribute('id');
+        Router.go('/'+route);
     }
 });
