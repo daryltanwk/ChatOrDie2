@@ -72,6 +72,12 @@
     max-width: 70%;
 }
 
+.threeWordPanel {
+    height:75px;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
 
 /* Custom CSS from 3rd Parties*/
 

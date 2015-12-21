@@ -25,6 +25,7 @@ Template.header.events({
     'click #headerLogOut': function(evt, template) {
         evt.preventDefault();
         Meteor.logout();
+        Router.go('/');
     },
     'click .headerLinkToPage':function(evt, template){
         evt.preventDefault();

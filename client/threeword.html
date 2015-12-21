@@ -1,0 +1,329 @@
+<template name="threeWordLayout">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h2><strong>3 Word Story</strong></h2>
+                </div>
+                {{#if isMenuPage}}
+                <div class="col-xs-6">
+                    <h2 class="text-right"><a href="#" id="3wordlayout_newStory" class="btn btn-success">New Story <i class="fa fa-fw fa-plus"></i></a></h2>
+                </div>
+                {{else}}
+                <div class="col-xs-6">
+                    <h2 class="text-right"><a href="#" id="3wordlayout_backToMenu" class="btn btn-info btn-danger"><i class="fa fa-fw fa-chevron-left"></i>Back to Menu</a></h2>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {{> yield "threeWordBody"}}
+        </div>
+    </div>
+    {{> threeWordNewEntryModal}}
+</template>
+<template name="threeWordStoryBody">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="col-xs-12 scrolling">
+                    <h3 class="titillium text-center">
+                    "{{title}}"
+                </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="kalam well doubleUnitHeightFixed scrolling">
+                        <h4 class="text-justify">
+                            {{#each story}}
+                                {{#if newPara}}
+                                <br><br>
+                                {{/if}}
+                                <span class="3word-storySegment">{{content}}</span>
+                            {{/each}}
+                            <br class="previewBr" hidden><br class="previewBr" hidden>
+                            <strong><span id="3wordstory-preview" class="text-primary"></span></strong>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <label class="control-label titillium">
+                                        Contribute!
+                                    </label>
+                                    <input id="3word-segmentContent" type="text" class="form-control" autocomplete="off">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="3word-newPara" type="checkbox"> Start New Paragraph
+                                    </label>
+                                    <button class="pull-right btn btn-sm btn-primary" id="3word-addSegmentSubmit" data-storyId="{{_id}}" type="submit"><span class="fa fa-fw fa-check-circle-o fa-lg"></span> Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="row">
+                <div class="col-xs-12" style="margin-bottom:3px;">
+                    <h3 class="titillium">
+                        Info Bar
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-primary text-center">
+                        <div class="panel-body">
+                            <h4 class="text-center">
+                                <strong>Plot Guide</strong>
+                            </h4>
+                            <div class="unitHeight scrolling">
+                                <p class="text-center">{{plotGuide}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-default doubleUnitHeightFixed">
+                        <div class="panel-body">
+                            <h4 class="text-center"><strong>
+                                Options
+                            </strong></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="threeWordMenuRow">
+    <div class="row">
+        {{#each this}} {{> threeWordMenuPanel}} {{/each}}
+    </div>
+</template>
+<template name="threeWordMenuPanel">
+    <div class="col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <p class="panel-title text-right"><span class="badge titillium">{{story.length}}</span> {{notOne story.length}}</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="#" id="{{_id}}" class="btn btn-primary btn-xs pull-right"><span class="fa fa-fw fa-play-circle"></span>READ!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body threeWordPanel">
+                <h4 class="text-center"><strong>{{title}}</strong></h4>
+            </div>
+            <div class="panel-footer">
+                <p class="text-center">Last activity: <strong>{{timeAgo dateModified}}</strong></p>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="threeWordMenuBody">
+    <div class="row">
+        <div class="col-xs-12">
+            {{#each storyRows}} {{> threeWordMenuRow}} {{/each}}
+        </div>
+    </div>
+</template>
+<template name="threeWordLayoutOld">
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1 class="titillium">
+                    Entries
+                </h1>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <h1>
+                    <a href="#" data-toggle="modal" data-target="#threeWordNewEntryModal" class="btn btn-warning text-right">
+                       <i class="fa fa-plus-square-o fa-lg fa-fw"></i> New
+                    </a>
+                </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="list-group quadUnitHeightFixed">
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">A strange story title that is quite long</h4>
+                            <p class="list-group-item-text">Last updated: 42 seconds ago</p>
+                        </a>
+                        <a href="#" class="list-group-item active">
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                            <p class="list-group-item-text">...</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                            <p class="list-group-item-text">...</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-8">
+                    <h1 class="titillium">
+                    The story so far...
+                </h1>
+                </div>
+                <div class="col-xs-4 text-right">
+                    <h1>
+                        <a href="#" class="btn btn-success text-right">
+                       <i class="fa fa-check fa-lg fa-fw"></i> Auto-Scroll
+                    </a>
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="kalam well doubleUnitHeightFixed scrolling">
+                        <h4 class="text-justify">Singapore Democratic Party Secretary-General Chee Soon Juan annnouced on Saturday (Aug 29) that he will contest in next month’s general election as he unveiled the party's last batch of candidates.<br><br>
+Chee last stood for election in 2001. He was unable to do so in 2006 and 2011 as he was a bankrupt after he lost in the defamation suits filed by ex-prime ministers the late Lee Kuan Yew and Goh Chok Tong against him and was unable to pay the damages.<br><br>
+At a media conference, Chee unveiled two other SDP candidates: Sadasivam Veriyah, an ex-teacher and unionist who contested in the 2011 election, and Wong Souk Yee, an ex-political detainee and playwright.
+Chee said the SDP will only announce the constituencies that all its 11 candidates are contesting on Nomination Day, which is on 1 September 2015. The GE will be held on 11 September 2015.<br><br>Singapore Democratic Party Secretary-General Chee Soon Juan annnouced on Saturday (Aug 29) that he will contest in next month’s general election as he unveiled the party's last batch of candidates.<br><br>
+Chee last stood for election in 2001. He was unable to do so in 2006 and 2011 as he was a bankrupt after he lost in the defamation suits filed by ex-prime ministers the late Lee Kuan Yew and Goh Chok Tong against him and was unable to pay the damages.<br><br>
+At a media conference, Chee unveiled two other SDP candidates: Sadasivam Veriyah, an ex-teacher and unionist who contested in the 2011 election, and Wong Souk Yee, an ex-political detainee and playwright.
+Chee said the SDP will only announce the constituencies that all its 11 candidates are contesting on Nomination Day, which is on 1 September 2015. The GE will be held on 11 September 2015.</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 class="titillium" style="margin-top:0px;">Contribute!</h3>
+                    <div class="panel unitHeightFixed">
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <input id="pew" type="text" class="form-control">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Start New Paragraph
+                                    </label>
+                                    <button class="pull-right btn btn-primary" type="submit"><span class="fa fa-check-circle-o fa-lg"></span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-12" style="margin-bottom:3px;">
+                    <h1 class="titillium">
+                        Details
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-primary text-center">
+                        <div class="panel-body">
+                            <h4 class="text-center">
+                                <strong>Plot Guide</strong>
+                            </h4>
+                            <p class="text-left">One day, xiao ming was walking along the beach when he saw a seashell. What he discovered next changed his life forever.</p>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary text-center">
+                        <div class="panel-body">
+                            <p class="text-center">
+                                <strong>Top 3 Contributors</strong>
+                            </p>
+                            <h4 class="kalam">itchyfishy <span class="badge titillium">944</span></h4>
+                            <h4 class="kalam">moltencrap <span class="badge titillium">512</span></h4>
+                            <h4 class="kalam">windsolace <span class="badge titillium">333</span></h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary text-center">
+                        <div class="panel-body">
+                            <p class="text-center">
+                                <strong>Total Contributions</strong>
+                            </p>
+                            <h4 class="kalam">391</h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary text-center">
+                        <div class="panel-body">
+                            <p class="text-center">
+                                <strong>Average Contributions</strong>
+                            </p>
+                            <h4 class="kalam">23.3</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL TEMPLATE -->
+    {{> threeWordNewEntryModal}}
+</template>
+<template name="threeWordNewEntryModal">
+    <div class="modal fade" id="threeWordNewEntryModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                    New 3-Word Story
+                </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <p class="lead">
+                            Story Info
+                        </p>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">
+                                Title
+                            </label>
+                            <div class="col-xs-10">
+                                <input type="text" id="3word-title" class="form-control" autocomplete="off">
+                                <span class="help-block">
+                                    A short title which will give the readers/contributors a rough idea of the story
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">
+                                Plot Guide
+                            </label>
+                            <div class="col-xs-10">
+                                <textarea id="3word-plotguide" class="form-control" rows="3"></textarea>
+                                <span class="help-block">
+                                    A brief description stating key plot points of the story which will guide contributors as they expand on your idea! Optional, but highly recommended! Do not use line breaks as they will be removed!
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">
+                        Go go, Power Rangers!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
