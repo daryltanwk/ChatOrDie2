@@ -9,16 +9,16 @@ Messages = new Mongo.Collection('messages');
 Meteor.methods({
     sendMsg: function(recipient, content) {
         //Check if client is logged in
-        if (!this.userId) {
+        if(!this.userId) {
             throw misc_error_003;
         }
 
         //Check recipient/content is valid
-        if (recipient !== "global" && Meteor.users.find({
+        if(recipient !== "global" && Meteor.users.find({
                 _id: recipient
             }).count() === 0) {
             throw misc_error_001;
-        } else if (!Match.test(content, String) || content==='') {
+        } else if(!Match.test(content, String) || content === '') {
             throw misc_error_002;
         }
 
@@ -30,9 +30,9 @@ Meteor.methods({
         var msg = new Message(content, recipient, sender, sentAt, index);
 
         //Insert the message
-        if (Meteor.isServer) {
+        if(Meteor.isServer) {
             return Messages.insert(msg);
-        } else if (Meteor.isClient) {
+        } else if(Meteor.isClient) {
             Messages.insert(msg);
             $('#chatPanel').scrollTop($('#chatPanel').prop('scrollHeight'));
         }
@@ -52,3 +52,4 @@ Message = function(content, recipient, sender, sentAt, index) {
 };
 
 //========== Prototypes ========== END
+

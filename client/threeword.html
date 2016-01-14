@@ -6,13 +6,13 @@
                     <h2><strong>3 Word Story</strong></h2>
                 </div>
                 {{#if isMenuPage}}
-                <div class="col-xs-6">
-                    <h2 class="text-right"><a href="#" id="3wordlayout_newStory" class="btn btn-success">New Story <i class="fa fa-fw fa-plus"></i></a></h2>
-                </div>
+                    <div class="col-xs-6">
+                        <h2 class="text-right"><a href="#" id="3wordlayout_newStory" class="btn btn-success">New Story <i class="fa fa-fw fa-plus"></i></a></h2>
+                    </div>
                 {{else}}
-                <div class="col-xs-6">
-                    <h2 class="text-right"><a href="#" id="3wordlayout_backToMenu" class="btn btn-info btn-danger"><i class="fa fa-fw fa-chevron-left"></i>Back to Menu</a></h2>
-                </div>
+                    <div class="col-xs-6">
+                        <h2 class="text-right"><a href="#" id="3wordlayout_backToMenu" class="btn btn-info btn-danger"><i class="fa fa-fw fa-chevron-left"></i>Back to Menu</a></h2>
+                    </div>
                 {{/if}}
             </div>
         </div>
@@ -36,17 +36,19 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="kalam well doubleUnitHeightFixed scrolling">
-                        <h4 class="text-justify">
+                    <div id="storyPanel" class="kalam well tripleUnitHeightFixed scrolling">
+                        <p class="text-justify" style="font-size:120%">
                             {{#each story}}
                                 {{#if newPara}}
-                                <br><br>
+                                    <br>
+                                    <br>
                                 {{/if}}
-                                <span class="3word-storySegment">{{content}}</span>
+                                <span data-index="{{index}}" class="threeWord-storySegment">{{content}}</span>
                             {{/each}}
-                            <br class="previewBr" hidden><br class="previewBr" hidden>
+                            <br class="previewBr" style="display: none;">
+                            <br class="previewBr" style="display: none;">
                             <strong><span id="3wordstory-preview" class="text-primary"></span></strong>
-                        </h4>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -96,13 +98,33 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="panel panel-default doubleUnitHeightFixed">
-                        <div class="panel-body">
-                            <h4 class="text-center"><strong>
-                                Options
-                            </strong></h4>
+            {{#if isOptions}}
+                {{> threeWordStoryBodyOptionsBox}} {{> threeWordStoryBodyActionBox}}
+            {{else}}
+                {{> threeWordStoryBodySegmentBox segmentInfo}}
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="threeWordStoryBodyOptionsBox">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default quadUnitHeight">
+                <div class="panel-body">
+                    <h4 class="text-center">
+                        <strong>
+                            Options
+                        </strong>
+                    </h4>
+                    <div class="row text-center">
+                        <div class="col-xs-6">
+                            <h5>
+                                AutoScroll : 
+                            </h5>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" id="threeWordAutoScroll" class="btn btn-xs btn-{{autoScrollButton.style}}"><i class="fa fa-fw fa-{{autoScrollButton.icon}}"></i>{{autoScrollButton.text}}</a>
                         </div>
                     </div>
                 </div>
@@ -110,9 +132,86 @@
         </div>
     </div>
 </template>
+
+<template name="threeWordStoryBodySegmentBox">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default doubleUnitHeight">
+                <div class="panel-body">
+                    <h4 class="text-center">
+                        <strong>
+                            Contributor
+                        </strong>
+                    </h4>
+                    <p class="text-center">
+                        {{author}}
+                    </p>
+                    <h4 class="text-center">
+                        <strong>
+                            Timestamp
+                        </strong>
+                        </h4>
+                    <p class="text-center">
+                        {{timestamp.date}}
+                        <br> {{timestamp.time}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="threeWordStoryBodyActionBox">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default quadUnitHeight">
+                <div class="panel-body">
+                    <h4 class="text-center">
+                        <strong>
+                            Actions
+                        </strong>
+                    </h4>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <a id="threeWord-deleteLastMsg" href="#" class="btn btn-warning">Delete Last Message</a>
+                            <br>
+                            <br>
+                            <a id="threeWord-deleteStory" data-toggle="modal" data-target=".threeWordStoryBodyActionBoxModal" href="#" class="btn btn-block btn-danger"><i class="fa fa-exclamation-triangle"></i> Delete Story <i class="fa fa-exclamation-triangle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> threeWordStoryBodyActionBoxModal}}
+</template>
+
+<template name="threeWordStoryBodyActionBoxModal">
+    <div class="modal fade threeWordStoryBodyActionBoxModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="text-danger">
+                        Warning!
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <p>You are about to permanently remove your story! This is irreversible!</p>
+                </div>
+                <div class="modal-footer">
+                    <a id="threeWordDeleteStoryCancel" href="#" class="btn btn-default">No, don't delete it!</a>
+                    <a id="threeWordDeleteStoryConfirm" href="#" class="btn btn-danger">Yes! Kill it!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
 <template name="threeWordMenuRow">
     <div class="row">
-        {{#each this}} {{> threeWordMenuPanel}} {{/each}}
+        {{#each this}}
+            {{> threeWordMenuPanel}}
+        {{/each}}
     </div>
 </template>
 <template name="threeWordMenuPanel">
@@ -140,7 +239,9 @@
 <template name="threeWordMenuBody">
     <div class="row">
         <div class="col-xs-12">
-            {{#each storyRows}} {{> threeWordMenuRow}} {{/each}}
+            {{#each storyRows}}
+                {{> threeWordMenuRow}}
+            {{/each}}
         </div>
     </div>
 </template>
@@ -327,3 +428,4 @@ Chee said the SDP will only announce the constituencies that all its 11 candidat
         </div>
     </div>
 </template>
+

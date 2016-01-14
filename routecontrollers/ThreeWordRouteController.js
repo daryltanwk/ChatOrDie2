@@ -3,7 +3,7 @@ ThreeWordController = RouteController.extend({
         return Meteor.subscribe('allStories');
     },
     action: function() {
-        if (this.ready()) {
+        if(this.ready()) {
             this.render();
         } else {
             this.render('loadingPage', {
@@ -33,7 +33,7 @@ Router.route('/3word/:storyId', {
         return ThreeWord.findOne(this.params.storyId);
     },
     action: function() {
-        if (!this.data()) {
+        if(!this.data()) {
             this.render('notFoundPage');
         } else {
             this.render('threeWordLayout');
@@ -41,5 +41,18 @@ Router.route('/3word/:storyId', {
                 to: 'threeWordBody'
             })
         }
+    },
+    onRun: function() {
+        Session.set('autoScroll', false);
+        Session.set('isOptions', true);
+        Session.set('newParaChecked', false);
+        this.next();
+    },
+    onStop: function() {
+        Session.set('autoScroll', undefined);
+        Session.set('isOptions', undefined);
+        Session.set('segmentId', undefined);
+        Session.set('newParaChecked', undefined);
     }
 });
+

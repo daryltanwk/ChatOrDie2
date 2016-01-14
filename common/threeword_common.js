@@ -62,7 +62,9 @@ Meteor.methods({
         var finalString = threeWord_tokenizeString(segmentContent);
 
         var result = new ThreeWordStorySegment(finalString, this.userId, ThreeWord.findOne(storyId).story.length + 1, isNewPara);
-
+        if (Meteor.isClient && Session.get('autoScroll')) {
+            $('#storyPanel').scrollTop($('#storyPanel').prop('scrollHeight'));
+        }
         return ThreeWord.update(storyId, {
             $push: {
                 story: result

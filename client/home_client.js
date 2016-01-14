@@ -18,7 +18,7 @@ Template.homeLayout.helpers({
 
 Template.chatBubble.helpers({
     name: function(userId) {
-        if (!userId) {
+        if(!userId) {
             return 'Anon';
         } else {
             return Meteor.users.findOne({
@@ -29,17 +29,21 @@ Template.chatBubble.helpers({
     tStamp: function(date) {
         return moment(date).format('DD/MM/YYYY, HH:mm');
     },
-    fromMeBubble:function(userId) {
-        if(Meteor.user().username === Meteor.users.findOne({_id:userId}).username){
+    fromMeBubble: function(userId) {
+        if(Meteor.user().username === Meteor.users.findOne({
+                _id: userId
+            }).username) {
             return 'text-right';
-        }else {
+        } else {
             return false;
         }
     },
-    bubbleColor:function(userId){
-        if(Meteor.user().username === Meteor.users.findOne({_id:userId}).username){
+    bubbleColor: function(userId) {
+        if(Meteor.user().username === Meteor.users.findOne({
+                _id: userId
+            }).username) {
             return 'Wheat';
-        }else {
+        } else {
             return 'AliceBlue';
         }
     }
@@ -72,3 +76,4 @@ Template.homeLayout.events({
 });
 
 //========== EVENT LISTENERS ========== END
+

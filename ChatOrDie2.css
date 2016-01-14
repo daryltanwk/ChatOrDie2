@@ -73,11 +73,20 @@
 }
 
 .threeWordPanel {
-    height:75px;
+    height: 75px;
     word-wrap: break-word;
     overflow: hidden;
 }
 
+.highlight.threeWord-storySegment {
+    cursor: pointer;
+    color: black;
+    background-color: cornsilk;
+    border-style: dashed;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 7px;
+}
 
 /* Custom CSS from 3rd Parties*/
 
