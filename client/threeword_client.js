@@ -105,6 +105,26 @@ Template.threeWordStoryBodyOptionsBox.events({
     }
 });
 
+Template.threeWordStoryBodyActionBox.helpers({
+    removeStoryClass: function() {
+        if(Template.currentData().owner === Meteor.user()._id) {
+            return 'danger';
+        } else {
+            return 'default disabled';
+        }
+    },
+    removeLastMsgButtonClass: function() {
+        var lastIndex = Template.currentData().story.length - 1;
+        if(Template.currentData().story.length !== 0 &&
+            (Template.currentData().story[lastIndex].author === Meteor.user()._id ||
+           Template.currentData().owner === Meteor.user()._id) ) {
+            return "warning";
+        } else {
+            return "default disabled";
+        }
+    }
+});
+
 Template.threeWordStoryBodyActionBox.events({
     'click #threeWord-deleteLastMsg': function(evt, template) {
         evt.preventDefault();
